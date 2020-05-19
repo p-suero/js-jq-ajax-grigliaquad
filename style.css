@@ -11,14 +11,14 @@ body {
 }
 
 #griglia {
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     margin: auto;
 }
 
 .quadrato {
-    width: 100px;
-    height: 100px;
+    width: calc(400px / 6);
+    height: calc(400px / 6);
     float: left;
     border: 2px solid black;
     display: flex;
@@ -27,6 +27,7 @@ body {
 
 .numero {
     margin: auto;
+    font-size: 25px;
 }
 
 .yellow {
