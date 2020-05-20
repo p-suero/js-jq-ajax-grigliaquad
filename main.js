@@ -10,8 +10,8 @@ $(document).ready(function() {
         $("#griglia").append(html_finale)
     }
 
-    //intercetto il click sul quadrato tramite la funzione on, vista l'aggiunta di elementi dinamici
-    $("#griglia").on("click", ".quadrato", function() {
+    //intercetto il click sul quadrato tramite la funzione one per evitare una ripetizione del click
+    $(".quadrato").one("click", function() {
         //salvo la variabile con l'elemento corrente al fine di riutilizzarla nella funzione ajax
         var elemento_corrente = $(this);
         //faccio una chiamata ajax per reperire un numero random da 1 a 9
@@ -21,16 +21,13 @@ $(document).ready(function() {
             "success": function(data) {
                 //recupero il numero restituito dall'api
                 var numero_random_pc = data.response
-                //verifico se nel quadrato è stato già inserito un numero
-                if (elemento_corrente.find(".numero").text() == "") {
-                    //aggiungo il numero nel quadrato corrente
-                    elemento_corrente.find(".numero").text(numero_random_pc);
-                    //creo la condizione per impostare il background al quadrato corrente
-                    if (numero_random_pc <= 5) {
-                        elemento_corrente.addClass("yellow");
-                    } else {
-                        elemento_corrente.addClass("green");
-                    }
+                //aggiungo il numero nel quadrato corrente
+                elemento_corrente.find(".numero").text(numero_random_pc);
+                //creo la condizione per impostare il background al quadrato corrente
+                if (numero_random_pc <= 5) {
+                    elemento_corrente.addClass("yellow");
+                } else {
+                    elemento_corrente.addClass("green");
                 }
             },
             "error": function() {
