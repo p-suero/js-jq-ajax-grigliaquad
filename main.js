@@ -7,11 +7,11 @@ $(document).ready(function() {
     var html_finale = template_function();
     //tramite il ciclo for aggiungo per 36 volte i quadrati nella pagina html
     for (var i = 0; i < 36; i++) {
-        $("#griglia").append(html_finale)
+        $("#griglia").append(html_finale);
     }
 
     //intercetto il click sul quadrato tramite la funzione one per evitare una ripetizione del click
-    $(".quadrato").one("click", function() {
+    $(".quadrato").click(function() {
         //salvo la variabile con l'elemento corrente al fine di riutilizzarla nella funzione ajax
         var elemento_corrente = $(this);
         //faccio una chiamata ajax per reperire un numero random da 1 a 9
@@ -20,7 +20,7 @@ $(document).ready(function() {
             "method": "GET",
             "success": function(data) {
                 //recupero il numero restituito dall'api
-                var numero_random_pc = data.response
+                var numero_random_pc = data.response;
                 //aggiungo il numero nel quadrato corrente
                 elemento_corrente.find(".numero").text(numero_random_pc);
                 //creo la condizione per impostare il background al quadrato corrente
@@ -31,7 +31,7 @@ $(document).ready(function() {
                 }
             },
             "error": function() {
-                alert("si è verificato un errore, impossibile recuperare il dato richiesto")
+                alert("si è verificato un errore, impossibile recuperare il dato richiesto");
             }
         })
     })
